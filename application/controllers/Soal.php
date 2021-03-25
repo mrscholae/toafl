@@ -24,6 +24,8 @@ class Soal extends CI_Controller {
 
         $soal = $this->Admin_model->get_one("tes", ["md5(id_tes)" => $id_tes]);
         
+        $data['tes'] = $soal;
+
         $data['id'] = $id_tes;
 
         if($soal['tipe_soal'] == 1){
