@@ -208,7 +208,7 @@ class Soal extends CI_Controller {
         $data['pesan1'] = "Saya%20ingin%20memesan%20e-sertifikat%20toafl%20berikut%20ini%20data%20saya%20%3A%20%0ANama%20%3A%20{$nama}%0ATTL%20%3A%20{$ttl}%0AAlamat%20%3A%20{$alamat}%0AScore%20%3A%20{$skor}%0AKeterangan%20%3A%20{$data['keterangan']}";
         $data['pesan2'] = "Saya%20ingin%20memesan%20e-sertifkat%20plus%20cetak%20sertifikat%20toafl%20berikut%20ini%20data%20saya%20%3A%20%0ANama%20%3A%20{$nama}%0ATTL%20%3A%20{$ttl}%0AAlamat%20%3A%20{$alamat}%0AScore%20%3A%20{$skor}%0AKeterangan%20%3A%20{$data['keterangan']}";
         $data['tgl_tes'] = $this->tgl_indo(date("d-m-Y", strtotime($tes['tgl_tes'])));
-        $data['tgl_pengumuman'] = $this->hari_ini(date("D", strtotime($tes['tgl_pengumuman']))) . ", " . $this->tgl_indo(date("d-M-Y", strtotime($tes['tgl_pengumuman'])));
+        $data['tgl_pengumuman'] = $this->hari_ini(date("D", strtotime($tes['tgl_pengumuman']))) . ", " . $this->tgl_indo(date("d-m-Y", strtotime($tes['tgl_pengumuman'])));
 
         $this->session->set_flashdata('pesan', $data);
         redirect(base_url("soal/id/".$id_tes), $data);
