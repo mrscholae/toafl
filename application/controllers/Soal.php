@@ -34,6 +34,12 @@ class Soal extends CI_Controller {
             $data['qiroah'] = $this->Soal_model->get_soal_qiroah();
 
             $page = "soal-toafl";
+        } else if($soal['tipe_soal'] == 2){
+            $data['soal'] = $this->Soal_model->get_soal_istimav2();
+            $data['tarakib'] = $this->Soal_model->get_soal_tarakibv2();
+            $data['qiroah'] = $this->Soal_model->get_soal_qiroahv2();
+
+            $page = "soal-toaflv2";
         }
 
         $this->load->view("pages/layout/header-user", $data);
