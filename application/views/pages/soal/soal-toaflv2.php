@@ -27,13 +27,19 @@
                     <div class="row">
                         <div class="col-12 mb-3 bg-light">
                             <p><center>Selamat anda telah berhasil menyelesaikan tes TOAFL Periode <?= $data['tgl_tes']?></center></p>
-                            <p><center>Berikut hasil Tes TOAFL Al Azhar Pare :</center></p>
+                            <p><center>Dengan biodata, </center></p>
                             <p><center>Nama : <?= $data['nama']?></center></p>
                             <p><center>TTL : <?= $data['t4_lahir'].", ".date("d-M-Y", strtotime($data['tgl_lahir']))?></center></p>
                             <p><center>Alamat : <?= $data['alamat']?></center></p>
-                            <p><center>SCORE : </center></p>
-                            <h3><center>(<?= $data['score']?>)</center></h3>
-                            <h3><center>(<?= $data['keterangan']?>)</center></h3>
+                            <p><center>Adapun Hasil SCORE TOAFL</center></p>
+                            <p><center>Akan diumumkan Besok Pagi</center></p>
+                            <p><center>Hari : <?= $data['tgl_pengumuman']?></center></p>
+                            <p><center>Sekitar Pukul 07.00 - 12.00</center></p>
+                            <br>
+                            <p><center>Jika Setelah Pukul 12.00</center></p>
+                            <p><center>Belum ada admin yang menginformasikan Nilai maka</center></p>
+                            <p><center>Silahkan konfirmasi ke admin bagian penilaian : </center></p>
+                            <p><center>WA : 0823-3512-4149</center></p>
 
                             <center><img src="<?= base_url()?>assets/img/kenapaharus.png" class="img-fluid mb-3" alt="Responsive image"></center>
 
@@ -246,7 +252,7 @@
                                                                             <div class="text-right">
                                                                                 <label for="soal_istima<?= $i.$k?>" class="mr-2" id="container-content"><?= $data?></label>
                                                                             </div>
-                                                                            <input type="radio" class="soal_istima" id="soal_istima<?= $i.$k?>" name="soal_istima[<?= $i?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
+                                                                            <input type="radio" class="soal_istima" id="soal_istima<?= $i.$k?>" name="soal_istima[<?= $i?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?> checked>
                                                                         </div>
                                                                     <?php endforeach;?>
                                                                 </div>
@@ -300,7 +306,7 @@
                                                                             <div class="text-right">
                                                                                 <label for="soal_tarakib<?= $i.$k?>" class="mr-2" id="container-content"><?= $data?></label>
                                                                             </div>
-                                                                            <input type="radio" class="soal_tarakib" id="soal_tarakib<?= $i.$k?>" name="soal_tarakib[<?= $i?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
+                                                                            <input type="radio" class="soal_tarakib" id="soal_tarakib<?= $i.$k?>" name="soal_tarakib[<?= $i?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?> checked>
                                                                         </div>
                                                                     <?php endforeach;?>
                                                                 </div>
@@ -434,7 +440,7 @@
                                                                             <div class="text-right">
                                                                                 <label for="soal_qiroah<?= $i.$k?>" class="mr-2" id="container-content"><?= $data?></label>
                                                                             </div>
-                                                                            <input type="radio" class="soal_qiroah" id="soal_qiroah<?= $i.$k?>" name="soal_qiroah[<?= $i?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
+                                                                            <input type="radio" class="soal_qiroah" id="soal_qiroah<?= $i.$k?>" name="soal_qiroah[<?= $i?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?> checked>
                                                                         </div>
                                                                     <?php endforeach;?>
                                                                 </div>
