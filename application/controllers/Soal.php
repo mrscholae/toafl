@@ -116,9 +116,9 @@ class Soal extends CI_Controller {
         $id_tes = $this->input->post("id_tes");
         $tes = $this->Admin_model->get_one("tes", ["md5(id_tes)" => $id_tes]);
 
-        if($soal['tipe_soal'] == 1){
+        if($tes['tipe_soal'] == 1){
             $soal = $this->Soal_model->get_soal_istima();
-        } else if($soal['tipe_soal'] == 2){
+        } else if($tes['tipe_soal'] == 2){
             $soal = $this->Soal_model->get_soal_istimav2();
         }
 
@@ -138,9 +138,9 @@ class Soal extends CI_Controller {
             $text .= $jawaban[$i]."/".$status."###";
         }
 
-        if($soal['tipe_soal'] == 1){
+        if($tes['tipe_soal'] == 1){
             $soal = $this->Soal_model->get_soal_tarakib();
-        } else if($soal['tipe_soal'] == 2){
+        } else if($tes['tipe_soal'] == 2){
             $soal = $this->Soal_model->get_soal_tarakibv2();
         }
         $jawaban = $this->input->post("soal_tarakib");
@@ -158,9 +158,9 @@ class Soal extends CI_Controller {
             $text .= $jawaban[$i]."/".$status."###";
         }
 
-        if($soal['tipe_soal'] == 1){
+        if($tes['tipe_soal'] == 1){
             $soal = $this->Soal_model->get_soal_qiroah();
-        } else if($soal['tipe_soal'] == 2){
+        } else if($tes['tipe_soal'] == 2){
             $soal = $this->Soal_model->get_soal_qiroahv2();
         }
 
