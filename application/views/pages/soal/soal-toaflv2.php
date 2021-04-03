@@ -241,7 +241,7 @@
                                                     <div class="form-group">
                                                         <div class="d-flex justify-content-end mb-3 mt-3">
                                                             <div class="text-right">
-                                                                <label for="" id="container-content"><b><?= angka_arab($soal['no'])?>.<?= $soal['soal']?></b></label>
+                                                                <label for="" dir="rtl" id="container-content"><b><?= angka_arab($soal['no'])?>.<?= $soal['soal']?></b></label>
                                                             </div>
                                                         </div>
                                                         <div id="select">
@@ -295,7 +295,7 @@
                                                     <div class="form-group">
                                                         <div class="d-flex justify-content-end mb-3 mt-3">
                                                             <div class="text-right">
-                                                                <label for="" id="container-content"><b><?= angka_arab($soal['no'])?>.<?= $soal['soal']?></b></label>
+                                                                <label for="" dir="rtl" id="container-content"><b><?= angka_arab($soal['no'])?>.<?= $soal['soal']?></b></label>
                                                             </div>
                                                         </div>
                                                         <div id="select">
@@ -429,7 +429,7 @@
                                                     <div class="form-group">
                                                         <div class="d-flex justify-content-end mb-3 mt-3">
                                                             <div class="text-right">
-                                                                <label for="" id="container-content"><b><?= angka_arab($soal['no'])?>.<?= $soal['soal']?></b></label>
+                                                                <label for="" dir="rtl" id="container-content"><b><?= angka_arab($soal['no'])?>.<?= $soal['soal']?></b></label>
                                                             </div>
                                                         </div>
                                                         <div id="select">
