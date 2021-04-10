@@ -40,6 +40,12 @@ class Soal extends CI_Controller {
             $data['qiroah'] = $this->Soal_model->get_soal_qiroahv2();
 
             $page = "soal-toaflv2";
+        } else if($soal['tipe_soal'] == 3){
+            $data['soal'] = $this->Soal_model->get_soal_istimav3();
+            $data['tarakib'] = $this->Soal_model->get_soal_tarakibv3();
+            $data['qiroah'] = $this->Soal_model->get_soal_qiroahv3();
+
+            $page = "soal-toaflv3";
         }
 
         $this->load->view("pages/layout/header-user", $data);
@@ -120,6 +126,8 @@ class Soal extends CI_Controller {
             $soal = $this->Soal_model->get_soal_istima();
         } else if($tes['tipe_soal'] == 2){
             $soal = $this->Soal_model->get_soal_istimav2();
+        } else if($tes['tipe_soal'] == 3){
+            $soal = $this->Soal_model->get_soal_istimav3();
         }
 
         $jawaban = $this->input->post("soal_istima");
@@ -142,6 +150,8 @@ class Soal extends CI_Controller {
             $soal = $this->Soal_model->get_soal_tarakib();
         } else if($tes['tipe_soal'] == 2){
             $soal = $this->Soal_model->get_soal_tarakibv2();
+        } else if($tes['tipe_soal'] == 3){
+            $soal = $this->Soal_model->get_soal_tarakibv3();
         }
         $jawaban = $this->input->post("soal_tarakib");
 
@@ -162,6 +172,8 @@ class Soal extends CI_Controller {
             $soal = $this->Soal_model->get_soal_qiroah();
         } else if($tes['tipe_soal'] == 2){
             $soal = $this->Soal_model->get_soal_qiroahv2();
+        } else if($tes['tipe_soal'] == 3){
+            $soal = $this->Soal_model->get_soal_qiroahv3();
         }
 
         $jawaban = $this->input->post("soal_qiroah");

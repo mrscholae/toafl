@@ -72,12 +72,12 @@
                                 <li>Sertifikat berlaku dua tahun dari tanggal penerbitanya.</li>
                             </ul>
 
-                            <p>Adapun untuk pemesanan E-Sertifikat TOAFL RESMI KURSUS BAHASA ARAB AL-AZHAR dengan SK DIKNAS Nomor 421.9/565/418.20/2020 (Biaya Penerbitan Sertifikat 75.000) Langsung Klik salah satu tombol dibawah ini <br> 
+                            <!-- <p>Adapun untuk pemesanan E-Sertifikat TOAFL RESMI KURSUS BAHASA ARAB AL-AZHAR dengan SK DIKNAS Nomor 421.9/565/418.20/2020 (Biaya Penerbitan Sertifikat 75.000) Langsung Klik salah satu tombol dibawah ini <br> 
                             <a href="https://wa.me/6285327880888?text=Permisi%20Admin%20Kak%20Mona%2C%20<?= $data['pesan1']?>" target="_blank" class="btn btn-block btn-success">Hubungi kak Mona</a></p>
                             <a href="https://wa.me/628113695333?text=Permisi%20Admin%20Kak%20Abbas%2C%20<?= $data['pesan1']?>" target="_blank" class="btn btn-block btn-success">Hubungi kak Abbas</a></p>
                             <p>Adapun yang ingin mendapatkan E-Sertifikat plus Sertifikat TOAFL RESMI KURSUS BAHASA ARAB AL-AZHAR dengan SK DIKNAS Nomor 421.9/565/418.20/2020 (Dikenai biaya 95.000/ belum termasuk ongkir, untuk biaya ongkir akan diinfokan oleh admin) Langsung Klik salah satu tombol dibawah ini : <br> 
                             <a href="https://wa.me/6285156604104?text=Permisi%20Admin%20Kak%20Triani%2C%20<?= $data['pesan2']?>" target="_blank" class="btn btn-block btn-success">Hubungi Kak Triani</a></p>
-                            <a href="https://wa.me/6282335124149?text=Permisi%20Admin%20Kak%20Kresna%2C%20<?= $data['pesan2']?>" target="_blank" class="btn btn-block btn-success">Hubungi Kak Kresna</a></p>
+                            <a href="https://wa.me/6282335124149?text=Permisi%20Admin%20Kak%20Kresna%2C%20<?= $data['pesan2']?>" target="_blank" class="btn btn-block btn-success">Hubungi Kak Kresna</a></p> -->
                         </div>
                     </div>
                 <?php else : ?>
@@ -145,7 +145,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="no_wa">No Whatsapp</label>
-                                                <input type="text" name="no_wa" id="no_wa" class="form-control form-control-md" required>
+                                                <input type="number" name="no_wa" id="no_wa" class="form-control form-control-md" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="t4_lahir">Tempat Lahir</label>
@@ -160,7 +160,7 @@
                                                 <textarea name="alamat" id="alamat" class="form-control form-control-sm"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="alamat_pengiriman">Alamat Pengiriman</label>
+                                                <label for="alamat_pengiriman">Alamat Lengkap Pengiriman Sertifikat</label>
                                                 <textarea name="alamat_pengiriman" id="alamat_pengiriman" class="form-control form-control-sm"></textarea>
                                                 <small id="emailHelp" class="form-text text-danger">Form Alamat pengiriman diisi jika memesan sertifikat</small>
                                             </div>
