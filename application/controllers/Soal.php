@@ -10,9 +10,6 @@ class Soal extends CI_Controller {
         parent::__construct();
         $this->load->model("Admin_model");
         $this->load->model("Soal_model");
-        // if(!$this->session->userdata('id_admin')) {
-        //     redirect("auth");
-        // }
         ini_set('xdebug.var_display_max_depth', '10');
         ini_set('xdebug.var_display_max_children', '256');
         ini_set('xdebug.var_display_max_data', '1024');
@@ -29,27 +26,17 @@ class Soal extends CI_Controller {
         $data['id'] = $id_tes;
 
         if($soal['tipe_soal'] == 1){
-            $data['soal'] = $this->Soal_model->get_soal_istima();
-            $data['tarakib'] = $this->Soal_model->get_soal_tarakib();
-            $data['qiroah'] = $this->Soal_model->get_soal_qiroah();
-
-            $page = "soal-toafl";
+            $data['istima'] = $this->Soal_model->get_soal_istimav1();
+            $data['tarakib'] = $this->Soal_model->get_soal_tarakibv1();
+            $data['qiroah'] = $this->Soal_model->get_soal_qiroahv1();
         } else if($soal['tipe_soal'] == 2){
-            $data['soal'] = $this->Soal_model->get_soal_istimav2();
+            $data['istima'] = $this->Soal_model->get_soal_istimav2();
             $data['tarakib'] = $this->Soal_model->get_soal_tarakibv2();
             $data['qiroah'] = $this->Soal_model->get_soal_qiroahv2();
-
-            $page = "soal-toaflv2";
-        } else if($soal['tipe_soal'] == 3){
-            $data['soal'] = $this->Soal_model->get_soal_istimav3();
-            $data['tarakib'] = $this->Soal_model->get_soal_tarakibv3();
-            $data['qiroah'] = $this->Soal_model->get_soal_qiroahv3();
-
-            $page = "soal-toaflv3";
         }
 
         $this->load->view("pages/layout/header-user", $data);
-        $this->load->view("pages/soal/".$page, $data);
+        $this->load->view("pages/soal/soal-toafl-", $data);
         $this->load->view("pages/layout/footer-user");
     }
 
@@ -119,122 +106,156 @@ class Soal extends CI_Controller {
     }
 
     public function add_jawaban(){
-        $id_tes = $this->input->post("id_tes");
-        $tes = $this->Admin_model->get_one("tes", ["md5(id_tes)" => $id_tes]);
+        $nama = $this->input->post("nama");
 
-        if($tes['tipe_soal'] == 1){
-            $soal = $this->Soal_model->get_soal_istima();
-        } else if($tes['tipe_soal'] == 2){
-            $soal = $this->Soal_model->get_soal_istimav2();
-        } else if($tes['tipe_soal'] == 3){
-            $soal = $this->Soal_model->get_soal_istimav3();
-        }
+        if($nama != ""){
 
-        $jawaban = $this->input->post("soal_istima");
-        // var_dump($jawaban);
-        $text = "";
-        $nilai_istima = 0;
-
-        foreach ($soal as $i => $soal) {
-            if($soal['jawaban'] == $jawaban[$i]){
-                $nilai_istima += 1;
-                $status = "benar";
-            } else {
-                $status = "salah";
+            $id_tes = $this->input->post("id_tes");
+            $tes = $this->Admin_model->get_one("tes", ["md5(id_tes)" => $id_tes]);
+    
+            if($tes['tipe_soal'] == 1){
+                $soal = $this->Soal_model->get_soal_istimav1();
+                $k = 0;
+                $data_soal = [];
+                foreach ($soal as $soal) {
+                    if($soal['tipe'] == "soal"){
+                        $data_soal[$k] = $soal;
+                        $k++;
+                    }
+                }
+            } else if($tes['tipe_soal'] == 2){
+                $soal = $this->Soal_model->get_soal_istimav2();
+                $k = 0;
+                $data_soal = [];
+                foreach ($soal as $soal) {
+                    if($soal['tipe'] == "soal"){
+                        $data_soal[$k] = $soal;
+                        $k++;
+                    }
+                }
             }
-
-            $text .= $jawaban[$i]."/".$status."###";
-        }
-
-        if($tes['tipe_soal'] == 1){
-            $soal = $this->Soal_model->get_soal_tarakib();
-        } else if($tes['tipe_soal'] == 2){
-            $soal = $this->Soal_model->get_soal_tarakibv2();
-        } else if($tes['tipe_soal'] == 3){
-            $soal = $this->Soal_model->get_soal_tarakibv3();
-        }
-        $jawaban = $this->input->post("soal_tarakib");
-
-        $nilai_tarakib = 0;
-
-        foreach ($soal as $i => $soal) {
-            if($soal['jawaban'] == $jawaban[$i]){
-                $nilai_tarakib += 1;
-                $status = "benar";
-            } else {
-                $status = "salah";
+    
+            $jawaban = $this->input->post("cekIstima");
+            $text = "";
+            $nilai_istima = 0;
+    
+            foreach ($data_soal as $i => $soal) {
+                if($soal['data']['jawaban'] == $jawaban[$i]){
+                    $nilai_istima += 1;
+                    $status = "benar";
+                } else {
+                    $status = "salah";
+                }
+    
+                $text .= $jawaban[$i]."/".$status."###";
             }
-
-            $text .= $jawaban[$i]."/".$status."###";
-        }
-
-        if($tes['tipe_soal'] == 1){
-            $soal = $this->Soal_model->get_soal_qiroah();
-        } else if($tes['tipe_soal'] == 2){
-            $soal = $this->Soal_model->get_soal_qiroahv2();
-        } else if($tes['tipe_soal'] == 3){
-            $soal = $this->Soal_model->get_soal_qiroahv3();
-        }
-
-        $jawaban = $this->input->post("soal_qiroah");
-
-        $nilai_qiroah = 0;
-
-        foreach ($soal as $i => $soal) {
-            if($soal['jawaban'] == $jawaban[$i]){
-                $nilai_qiroah += 1;
-                $status = "benar";
-            } else {
-                $status = "salah";
+    
+            if($tes['tipe_soal'] == 1){
+                $soal = $this->Soal_model->get_soal_tarakibv1();
+                $k = 0;
+                $data_soal = [];
+                foreach ($soal as $soal) {
+                    if($soal['tipe'] == "soal"){
+                        $data_soal[$k] = $soal;
+                        $k++;
+                    }
+                }
+            } else if($tes['tipe_soal'] == 2){
+                $soal = $this->Soal_model->get_soal_tarakibv2();
+                $k = 0;
+                $data_soal = [];
+                foreach ($soal as $soal) {
+                    if($soal['tipe'] == "soal"){
+                        $data_soal[$k] = $soal;
+                        $k++;
+                    }
+                }
             }
+            
+            $jawaban = $this->input->post("cekTarakib");
+    
+            $nilai_tarakib = 0;
+    
+            foreach ($data_soal as $i => $soal) {
+                if($soal['data']['jawaban'] == $jawaban[$i]){
+                    $nilai_tarakib += 1;
+                    $status = "benar";
+                } else {
+                    $status = "salah";
+                }
+    
+                $text .= $jawaban[$i]."/".$status."###";
+            }
+    
+            if($tes['tipe_soal'] == 1){
+                $soal = $this->Soal_model->get_soal_qiroahv1();
+                $k = 0;
+                $data_soal = [];
+                foreach ($soal as $soal) {
+                    if($soal['tipe'] == "soal"){
+                        $data_soal[$k] = $soal;
+                        $k++;
+                    }
+                }
+            } else if($tes['tipe_soal'] == 2){
+                $soal = $this->Soal_model->get_soal_qiroahv2();
+                $k = 0;
+                $data_soal = [];
+                foreach ($soal as $soal) {
+                    if($soal['tipe'] == "soal"){
+                        $data_soal[$k] = $soal;
+                        $k++;
+                    }
+                }
+            }
+            
+            $jawaban = $this->input->post("cekQiroah");
+    
+            $nilai_qiroah = 0;
+    
+            foreach ($data_soal as $i => $soal) {
+                if($soal['data']['jawaban'] == $jawaban[$i]){
+                    $nilai_qiroah += 1;
+                    $status = "benar";
+                } else {
+                    $status = "salah";
+                }
+    
+                $text .= $jawaban[$i]."/".$status."###";
+            }
+    
+            $data = [
+                "email" => $this->input->post("email"),
+                "nama" => $this->input->post("nama"),
+                "no_wa" => $this->input->post("no_wa"),
+                "t4_lahir" => $this->input->post("t4_lahir"),
+                "tgl_lahir" => $this->input->post("tgl_lahir"),
+                "alamat" => $this->input->post("alamat"),
+                "alamat_pengiriman" => $this->input->post("alamat_pengiriman"),
+                "nilai_istima" => $nilai_istima,
+                "nilai_tarakib" => $nilai_tarakib,
+                "nilai_qiroah" => $nilai_qiroah,
+                "text" => $text,
+                "id_tes" => $tes['id_tes'],
+                "tipe_soal" => $tes['tipe_soal'],
+            ];
+    
+            $this->Admin_model->add_data("peserta_toafl", $data);
 
-            $text .= $jawaban[$i]."/".$status."###";
+            $data = [
+                "nama" => $this->input->post("nama"),
+                "ttl" => $data['t4_lahir'] . ", " . $this->tgl_indo(date("d-m-Y", strtotime($data['tgl_lahir']))),
+                "alamat" => $data['alamat_pengiriman'],
+                "no_wa" => $data['no_wa'],
+                "hari_pengumuman" => $this->hari_ini(date("D", strtotime($tes['tgl_pengumuman']))),
+                "tgl_pengumuman" => $this->tgl_indo(date("d-m-Y", strtotime($tes['tgl_pengumuman']))),
+            ];
+
+            $this->session->set_flashdata('pesan', $data);
+        } else {
+            $this->session->set_flashdata('pesan', $data);
         }
-
-        $data = [
-            "email" => $this->input->post("email"),
-            "nama" => $this->input->post("nama"),
-            "no_wa" => $this->input->post("no_wa"),
-            "t4_lahir" => $this->input->post("t4_lahir"),
-            "tgl_lahir" => $this->input->post("tgl_lahir"),
-            "alamat" => $this->input->post("alamat"),
-            "alamat_pengiriman" => $this->input->post("alamat_pengiriman"),
-            "nilai_istima" => $nilai_istima,
-            "nilai_tarakib" => $nilai_tarakib,
-            "nilai_qiroah" => $nilai_qiroah,
-            "text" => $text,
-            "id_tes" => $tes['id_tes'],
-        ];
-
-        $id = $this->Admin_model->add_data("peserta_toafl", $data);
         
-        $data = $this->Admin_model->get_one("peserta_toafl", ["id" => $id]);
-
-        $skor = round((($this->istima($data['nilai_istima']) + $this->tarakib($data['nilai_tarakib']) + $this->qiroah($data['nilai_qiroah'])) * 10) / 3);
-        
-        $array_from_to = array (
-            ' ' => '%20',
-            '"' => '%22',
-            '/' => '%2F',
-            ',' => '%2C',
-        );
-        
-        $text = str_replace(array_keys($array_from_to), $array_from_to, $text);
-        
-        $nama = str_replace(array_keys($array_from_to), $array_from_to, $data['nama']);
-        $t4_lahir = str_replace(array_keys($array_from_to), $array_from_to, $data['t4_lahir']);
-        $tgl_lahir = str_replace(array_keys($array_from_to), $array_from_to, $this->tgl_indo(date("d-m-Y", strtotime($data['tgl_lahir']))));
-        $alamat = str_replace(array_keys($array_from_to), $array_from_to, $data['alamat_pengiriman']);
-        $ttl = str_replace(array_keys($array_from_to), $array_from_to, $t4_lahir.", ".$tgl_lahir);
-
-        $data['score'] = $skor;
-        $data['keterangan'] = str_replace(array_keys($array_from_to), $array_from_to, $this->keterangan($skor));
-        $data['pesan1'] = "Saya%20ingin%20memesan%20e-sertifikat%20toafl%20berikut%20ini%20data%20saya%20%3A%20%0ANama%20%3A%20{$nama}%0ATTL%20%3A%20{$ttl}%0AAlamat%20%3A%20{$alamat}%0AScore%20%3A%20{$skor}%0AKeterangan%20%3A%20{$data['keterangan']}";
-        $data['pesan2'] = "Saya%20ingin%20memesan%20e-sertifkat%20plus%20cetak%20sertifikat%20toafl%20berikut%20ini%20data%20saya%20%3A%20%0ANama%20%3A%20{$nama}%0ATTL%20%3A%20{$ttl}%0AAlamat%20%3A%20{$alamat}%0AScore%20%3A%20{$skor}%0AKeterangan%20%3A%20{$data['keterangan']}";
-        $data['tgl_tes'] = $this->tgl_indo(date("d-m-Y", strtotime($tes['tgl_tes'])));
-        $data['tgl_pengumuman'] = $this->hari_ini(date("D", strtotime($tes['tgl_pengumuman']))) . ", " . $this->tgl_indo(date("d-m-Y", strtotime($tes['tgl_pengumuman'])));
-
-        $this->session->set_flashdata('pesan', $data);
         redirect(base_url("soal/id/".$id_tes), $data);
     }
 
