@@ -32,11 +32,11 @@
                                     <p><center>Selamat anda telah berhasil menyelesaikan tes TOAFL Periode <?= $data['tgl_tes']?></center></p>
                                     <p><center>Dengan biodata, </center></p>
                                     <p><center>Nama : <?= $data['nama']?></center></p>
-                                    <p><center>TTL : <?= $data['t4_lahir'].", ".date("d-M-Y", strtotime($data['tgl_lahir']))?></center></p>
+                                    <p><center>TTL : <?= $data['ttl']?></center></p>
                                     <p><center>Alamat : <?= $data['alamat']?></center></p>
                                     <p><center>Adapun Hasil SCORE TOAFL</center></p>
                                     <p><center>Akan diumumkan Besok Pagi</center></p>
-                                    <p><center>Hari : <?= $data['tgl_pengumuman']?></center></p>
+                                    <p><center>Hari : <?= $data['hari_pengumuman'].", ".$data['tgl_pengumuman']?></center></p>
                                     <p><center>Sekitar Pukul 07.00 - 12.00</center></p>
                                     <br>
                                     <p><center>Jika Setelah Pukul 12.00</center></p>

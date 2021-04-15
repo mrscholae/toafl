@@ -249,6 +249,7 @@ class Soal extends CI_Controller {
                 "no_wa" => $data['no_wa'],
                 "hari_pengumuman" => $this->hari_ini(date("D", strtotime($tes['tgl_pengumuman']))),
                 "tgl_pengumuman" => $this->tgl_indo(date("d-m-Y", strtotime($tes['tgl_pengumuman']))),
+                "tgl_tes" => $this->tgl_indo(date("d-m-Y", strtotime($tes['tgl_tes']))),
             ];
 
             $this->session->set_flashdata('pesan', $data);
