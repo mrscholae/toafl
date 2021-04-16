@@ -5022,7 +5022,7 @@ class Soal_model extends CI_Model {
     public function get_soal_tarakibv3(){
         $data = [
             [
-                "tipe" => "petujuk",
+                "tipe" => "petunjuk",
                 "data" => "
                     <p><center><b>فهم التراكيب والتعبيرات</b></center></p>
                 "
