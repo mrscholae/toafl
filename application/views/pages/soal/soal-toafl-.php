@@ -174,7 +174,9 @@
                                         <?php if($soal['tipe'] == "petunjuk") :?>
                                             <div class="card">
                                                 <div class="card-body" dir="rtl">
-                                                    <?= $soal['data']?>
+                                                    <div class="text-right">
+                                                        <?= $soal['data']?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         <?php elseif($soal['tipe'] == "soal") :?>
@@ -190,11 +192,11 @@
                                                         <?php foreach ($soal['data']['pilihan'] as $k => $data) :?>
                                                             <div class="mb-3">
                                                                 <div class="form-check">
-                                                                    <div class="text-right">
-                                                                        <label for="soal_istima<?= $i.$k?>" class="form-check-label" id="container-content">
+                                                                    <div class="text-right" dir="rtl">
+                                                                        <label>
+                                                                            <input type="radio" class="soal_istima" data-id="<?= $i?>" id="soal_istima<?= $i.$k?>" name="soal_istima[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>> 
                                                                             <?= $data?>
                                                                         </label>
-                                                                        <input type="radio" class="soal_istima" data-id="<?= $i?>" id="soal_istima<?= $i.$k?>" name="soal_istima[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -230,8 +232,10 @@
                                     <div class="mb-3 soal">
                                         <?php if($soal['tipe'] == "petunjuk") :?>
                                             <div class="card">
-                                                <div class="card-body">
-                                                    <?= $soal['data']?>
+                                                <div class="card-body" dir="rtl">
+                                                    <div class="text-right">
+                                                        <?= $soal['data']?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         <?php elseif($soal['tipe'] == "soal") :?>
@@ -247,11 +251,11 @@
                                                         <?php foreach ($soal['data']['pilihan'] as $k => $data) :?>
                                                             <div class="mb-3">
                                                                 <div class="form-check">
-                                                                    <div class="text-right">
-                                                                        <label for="soal_tarakib<?= $i.$k?>" class="form-check-label" id="container-content">
+                                                                    <div class="text-right" dir="rtl">
+                                                                        <label>
+                                                                            <input type="radio" class="soal_tarakib" data-id="<?= $i?>" id="soal_tarakib<?= $i.$k?>" name="soal_tarakib[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
                                                                             <?= $data?>
                                                                         </label>
-                                                                        <input type="radio" class="soal_tarakib" data-id="<?= $i?>" id="soal_tarakib<?= $i.$k?>" name="soal_tarakib[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -274,12 +278,12 @@
                                 </div>
                             </div>
                             
-                            <div class="soalToaflQrioah">
+                            <div class="soalToaflQiroah">
                                 <div class="col-12 mb-3">
                                     <div class="d-flex justify-content-end">
                                         <!-- <a href="javascript:void(0)" class="btn btn-md btn-success btnSoalTarakib"><i class="fa fa-arrow-left mr-2"></i>SOAL TARAKIB</a> -->
                                         <button type="button" class="btn btn-md btn-primary submitForm">Simpan</button>
-                                    </div>                                        
+                                    </div>
                                 </div>
                                 <?php 
                                     $no = 0;
@@ -287,8 +291,10 @@
                                     <div class="mb-3 soal">
                                         <?php if($soal['tipe'] == "petunjuk") :?>
                                             <div class="card">
-                                                <div class="card-body">
-                                                    <?= $soal['data']?>
+                                                <div class="card-body" dir="rtl">
+                                                    <div class="text-right">
+                                                        <?= $soal['data']?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         <?php elseif($soal['tipe'] == "soal") :?>
@@ -304,11 +310,11 @@
                                                         <?php foreach ($soal['data']['pilihan'] as $k => $data) :?>
                                                             <div class="mb-3">
                                                                 <div class="form-check">
-                                                                    <div class="text-right">
-                                                                        <label for="soal_qiroah<?= $i.$k?>" class="form-check-label" id="container-content">
+                                                                    <div class="text-right" dir="rtl">
+                                                                        <label>
+                                                                            <input type="radio" class="soal_qiroah" data-id="<?= $i?>" id="soal_qiroah<?= $i.$k?>" name="soal_qiroah[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
                                                                             <?= $data?>
                                                                         </label>
-                                                                        <input type="radio" class="soal_qiroah" data-id="<?= $i?>" id="soal_qiroah<?= $i.$k?>" name="soal_qiroah[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -342,7 +348,7 @@
 <script>
     $(".soalToaflIstima").hide();
     $(".soalToaflTarakib").hide();
-    $(".soalToaflQrioah").hide();
+    $(".soalToaflQiroah").hide();
 
     $("#fontSize").change(function(){
         let size = $(this).val();
@@ -407,7 +413,7 @@
                     } else {
                         $(".soalToaflIstima").show();
                         $(".soalToaflTarakib").hide();
-                        $(".soalToaflQrioah").hide();
+                        $(".soalToaflQiroah").hide();
                         $(".titleBar").html("TES TOEFL (ISTIMA)")
                         $("#dataDiri").hide();
                         $("#formSoal").scrollTop(0);
@@ -455,13 +461,13 @@
 
             $(".soalToaflIstima").show();
             $(".soalToaflTarakib").hide();
-            $(".soalToaflQrioah").hide();
+            $(".soalToaflQiroah").hide();
             $(".titleBar").html("TES TOEFL (ISTIMA)")
             return false;
         } else {
             $(".soalToaflIstima").hide();
             $(".soalToaflTarakib").show();
-            $(".soalToaflQrioah").hide();
+            $(".soalToaflQiroah").hide();
             
             $(".titleBar").html("TES TOEFL (TARAKIB)")
             $("#formSoal").scrollTop(0);
@@ -488,13 +494,13 @@
 
             $(".soalToaflIstima").hide();
             $(".soalToaflTarakib").show();
-            $(".soalToaflQrioah").hide();
+            $(".soalToaflQiroah").hide();
             $(".titleBar").html("TES TOEFL (TARAKIB)")
             return false;
         } else {
             $(".soalToaflIstima").hide();
             $(".soalToaflTarakib").hide();
-            $(".soalToaflQrioah").show();
+            $(".soalToaflQiroah").show();
             
             $(".titleBar").html("TES TOEFL (QIROAH)")
             $("#formSoal").scrollTop(0);
@@ -504,7 +510,7 @@
     $(".btnDataDiri").click(function(){
         $(".soalToaflIstima").hide();
         $(".soalToaflTarakib").hide();
-        $(".soalToaflQrioah").hide();
+        $(".soalToaflQiroah").hide();
         $("#dataDiri").show();
 
         $("#formSoal").scrollTop(0);
@@ -529,7 +535,7 @@
 
             $(".soalToaflIstima").hide();
             $(".soalToaflTarakib").hide();
-            $(".soalToaflQrioah").show();
+            $(".soalToaflQiroah").show();
             $(".titleBar").html("TES TOEFL (QIROAH)")
             return false;
         } else {

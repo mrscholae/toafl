@@ -33,6 +33,10 @@ class Soal extends CI_Controller {
             $data['istima'] = $this->Soal_model->get_soal_istimav2();
             $data['tarakib'] = $this->Soal_model->get_soal_tarakibv2();
             $data['qiroah'] = $this->Soal_model->get_soal_qiroahv2();
+        } else if($soal['tipe_soal'] == 3){
+            $data['istima'] = $this->Soal_model->get_soal_istimav3();
+            $data['tarakib'] = $this->Soal_model->get_soal_tarakibv3();
+            $data['qiroah'] = $this->Soal_model->get_soal_qiroahv3();
         }
 
         $this->load->view("pages/layout/header-user", $data);
@@ -115,23 +119,18 @@ class Soal extends CI_Controller {
     
             if($tes['tipe_soal'] == 1){
                 $soal = $this->Soal_model->get_soal_istimav1();
-                $k = 0;
-                $data_soal = [];
-                foreach ($soal as $soal) {
-                    if($soal['tipe'] == "soal"){
-                        $data_soal[$k] = $soal;
-                        $k++;
-                    }
-                }
             } else if($tes['tipe_soal'] == 2){
                 $soal = $this->Soal_model->get_soal_istimav2();
-                $k = 0;
-                $data_soal = [];
-                foreach ($soal as $soal) {
-                    if($soal['tipe'] == "soal"){
-                        $data_soal[$k] = $soal;
-                        $k++;
-                    }
+            } else if($tes['tipe_soal'] == 3){
+                $soal = $this->Soal_model->get_soal_istimav3();
+            }
+
+            $k = 0;
+            $data_soal = [];
+            foreach ($soal as $soal) {
+                if($soal['tipe'] == "soal"){
+                    $data_soal[$k] = $soal;
+                    $k++;
                 }
             }
     
@@ -152,26 +151,21 @@ class Soal extends CI_Controller {
     
             if($tes['tipe_soal'] == 1){
                 $soal = $this->Soal_model->get_soal_tarakibv1();
-                $k = 0;
-                $data_soal = [];
-                foreach ($soal as $soal) {
-                    if($soal['tipe'] == "soal"){
-                        $data_soal[$k] = $soal;
-                        $k++;
-                    }
-                }
             } else if($tes['tipe_soal'] == 2){
                 $soal = $this->Soal_model->get_soal_tarakibv2();
-                $k = 0;
-                $data_soal = [];
-                foreach ($soal as $soal) {
-                    if($soal['tipe'] == "soal"){
-                        $data_soal[$k] = $soal;
-                        $k++;
-                    }
-                }
+            } else if($tes['tipe_soal'] == 3){
+                $soal = $this->Soal_model->get_soal_tarakibv3();
             }
             
+            $k = 0;
+            $data_soal = [];
+            foreach ($soal as $soal) {
+                if($soal['tipe'] == "soal"){
+                    $data_soal[$k] = $soal;
+                    $k++;
+                }
+            }
+
             $jawaban = $this->input->post("cekTarakib");
     
             $nilai_tarakib = 0;
@@ -189,23 +183,18 @@ class Soal extends CI_Controller {
     
             if($tes['tipe_soal'] == 1){
                 $soal = $this->Soal_model->get_soal_qiroahv1();
-                $k = 0;
-                $data_soal = [];
-                foreach ($soal as $soal) {
-                    if($soal['tipe'] == "soal"){
-                        $data_soal[$k] = $soal;
-                        $k++;
-                    }
-                }
             } else if($tes['tipe_soal'] == 2){
                 $soal = $this->Soal_model->get_soal_qiroahv2();
-                $k = 0;
-                $data_soal = [];
-                foreach ($soal as $soal) {
-                    if($soal['tipe'] == "soal"){
-                        $data_soal[$k] = $soal;
-                        $k++;
-                    }
+            } else if($tes['tipe_soal'] == 3){
+                $soal = $this->Soal_model->get_soal_qiroahv3();
+            }
+
+            $k = 0;
+            $data_soal = [];
+            foreach ($soal as $soal) {
+                if($soal['tipe'] == "soal"){
+                    $data_soal[$k] = $soal;
+                    $k++;
                 }
             }
             
