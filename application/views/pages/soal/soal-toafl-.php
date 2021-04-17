@@ -35,13 +35,13 @@
                                     <p><center>TTL : <?= $data['ttl']?></center></p>
                                     <p><center>Alamat : <?= $data['alamat']?></center></p>
                                     <p><center>Adapun Hasil SCORE TOAFL</center></p>
-                                    <p><center>Akan diumumkan Besok Pagi</center></p>
+                                    <p><center>Akan diumumkan Paling Lambat</center></p>
                                     <p><center>Hari : <?= $data['hari_pengumuman'].", ".$data['tgl_pengumuman']?></center></p>
-                                    <p><center>Sekitar Pukul 07.00 - 12.00</center></p>
+                                    <p><center>Pukul 17.00</center></p>
                                     <br>
-                                    <p><center>Jika Setelah Pukul 12.00</center></p>
-                                    <p><center>Belum ada admin yang menginformasikan Nilai maka</center></p>
-                                    <p><center>Silahkan konfirmasi ke admin bagian penilaian : </center></p>
+                                    <p><center>Jika Setelah Pukul 17.00</center></p>
+                                    <p><center>Belum mendapatkan nilai/ belum dijapri admin,</center></p>
+                                    <p><center>Maka Silahkan konfirmasi ke admin bagian penilaian : </center></p>
                                     <p><center>WA : 0823-3512-4149</center></p>
 
                                     <center><img src="<?= base_url()?>assets/img/kenapaharus.png" class="img-fluid mb-3" alt="Responsive image"></center>
@@ -300,7 +300,7 @@
                                         <?php elseif($soal['tipe'] == "soal") :?>
                                             <div class="card">
                                                 <div class="card-body" id="soalQrioah<?= $i?>">
-                                                    <input type="hidden" name="cekQrioah[]" data-id="<?= $i?>" id="cekQrioah<?= $i?>" value="null">
+                                                    <input type="hidden" name="cekQiroah[]" data-id="<?= $i?>" id="cekQiroah<?= $i?>" value="null">
                                                     <!-- <div class="form-group"> -->
                                                         <div dir="rtl" class="mb-3">
                                                             <div class="text-right">
@@ -438,7 +438,7 @@
     $('input:radio.soal_qiroah').click(function () {
         let value = $(this).val();
         let id = $(this).data("id");
-        $("#cekQrioah"+id).val(value)
+        $("#cekQiroah"+id).val(value)
     });
 
     $(".btnSoalTarakib").click(function(){
@@ -518,7 +518,7 @@
 
     $(".submitForm").click(function(){
         if($('input:radio.soal_qiroah:checked').length != 50){
-            $.each($("input[name='cekQrioah[]']"), function(){
+            $.each($("input[name='cekQiroah[]']"), function(){
                 id = $(this).data("id");
                 $("#soalQrioah"+id).removeClass("list-group-item-danger")
 
