@@ -42,7 +42,7 @@ class Soal extends CI_Controller {
             $page = "soal-toafl-";
         } else if($soal['tipe_soal'] == 4){
             
-            $data['title'] = "Try Out Timur Tengah";
+            $data['title'] = "E-Test Try Out Seleksi Timur Tengah";
             $data['istima'] = $this->Soal_model->get_soalv4();
             $page = "soal-toafl-satu-sesi";
         }
