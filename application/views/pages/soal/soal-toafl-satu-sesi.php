@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="menu" style="display:none">
-                        <div class="head-brand bg-light p-2 mb-3"><center><h3>KURSUS ARAB <br>AL-AZHAR</h3><br><i>Jagonya ngomong arab, mahir kitab kuning dan Score TOAFL tinggi</i></center></div>
+                        <div class="head-brand bg-light p-2 mb-3"><center><h3>AL AZHAR CENTER PARE</h3><br><i>Pusat Study Bimbingan Persiapan Kuliah di Timur Tengah</i></center></div>
                         <div class="mb-3">
                             <ul class="list-group">
                                 <li class="list-group-item">
@@ -149,11 +149,7 @@
                                             <label for="alamat">Alamat</label>
                                             <textarea name="alamat" id="alamat" class="form-control form-control-sm"></textarea>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="alamat_pengiriman">Alamat Lengkap Pengiriman Sertifikat</label>
-                                            <textarea name="alamat_pengiriman" id="alamat_pengiriman" class="form-control form-control-sm"></textarea>
-                                            <small id="emailHelp" class="form-text text-muted">Form Alamat pengiriman diisi jika memesan sertifikat</small>
-                                        </div>
+                                        <input type="hidden" name="alamat_pengiriman">
                                     </li>
                                 </ul>
                                 <div class="d-flex justify-content-end">
@@ -294,7 +290,6 @@
                         $(".soalToaflIstima").show();
                         $(".soalToaflTarakib").hide();
                         $(".soalToaflQiroah").hide();
-                        $(".titleBar").html("TES TOAFL")
                         $("#dataDiri").hide();
                         $("#formSoal").scrollTop(0);
                     }
@@ -334,11 +329,6 @@
                 title: 'Oops...',
                 text: 'Anda belum menyelesaikan soal',
             })
-
-            $(".soalToaflIstima").hide();
-            $(".soalToaflTarakib").hide();
-            $(".soalToaflQiroah").show();
-            $(".titleBar").html("TES TOAFL")
             return false;
         } else {
             var c = confirm("Yakin telah menyelesaikan pekerjaan Anda?")

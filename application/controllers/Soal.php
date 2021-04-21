@@ -41,6 +41,8 @@ class Soal extends CI_Controller {
             $data['qiroah'] = $this->Soal_model->get_soal_qiroahv3();
             $page = "soal-toafl-";
         } else if($soal['tipe_soal'] == 4){
+            
+            $data['title'] = "Try Out Timur Tengah";
             $data['istima'] = $this->Soal_model->get_soalv4();
             $page = "soal-toafl-satu-sesi";
         }

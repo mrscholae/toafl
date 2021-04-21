@@ -6385,7 +6385,8 @@ class Soal_model extends CI_Model {
         $data = [
             [
                 "tipe" => "petunjuk",
-                "data" => "<center><b>القسم الثاني : فهم التراكيب والتعبيرات</b></center>"
+                "data" => "<center><b>TRY OUT PERSIAPAN KULIAH DI TIMUR TENGAH<br>
+                اختبار اللغة العربية لاستعداد الدراسة في شرق الأوسط</b></center>"
             ],
             [
                 "tipe" => "soal",
