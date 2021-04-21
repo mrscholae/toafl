@@ -120,7 +120,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <form action="<?= base_url()?>soal/add_jawaban" method="post" id="formSoal" onsubmit="setFormSubmitting()">
+                        <form action="<?= base_url()?>soal/add_jawaban_satu_sesi" method="post" id="formSoal" onsubmit="setFormSubmitting()">
                             <input type="hidden" name="id_tes" value="<?= $id?>">
                             <div class="mb-3 soal" id="dataDiri">
                                 <ul class="list-group mb-3">
@@ -138,7 +138,7 @@
                                             <input type="number" name="no_wa" id="no_wa" class="form-control form-control-md" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="t4_lahir">Tempat Lahir</label>
+                                            <label for="t4_lahir">Kota Lahir</label>
                                             <input type="text" name="t4_lahir" id="t4_lahir" class="form-control form-control-md" required>
                                         </div>
                                         <div class="form-group">
@@ -164,7 +164,7 @@
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
                                         <a href="javascript:void(0)" class="btn btn-md btn-success btnDataDiri"><i class="fa fa-arrow-left mr-2"></i>Back</a>
-                                        <a href="javascript:void(0)" class="btn btn-md btn-success btnSoalTarakib">Next<i class="fa fa-arrow-right ml-2"></i></a>
+                                        <button type="button" class="btn btn-md btn-primary submitForm">Simpan</button>
                                     </div>
                                 </div>
                                 <?php 
@@ -213,124 +213,6 @@
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between">
                                         <a href="javascript:void(0)" class="btn btn-md btn-success btnDataDiri"><i class="fa fa-arrow-left mr-2"></i>Back</a>
-                                        <a href="javascript:void(0)" class="btn btn-md btn-success btnSoalTarakib">Next<i class="fa fa-arrow-right ml-2"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="soalToaflTarakib">
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-end">
-                                        <!-- <a href="javascript:void(0)" class="btn btn-md btn-success btnSoalIstima"><i class="fa fa-arrow-left mr-2"></i>SOAL ISTIMA</a> -->
-                                        <!-- <a href="javascript:void(0)" class="btn btn-md btn-success btnDataDiri"><i class="fa fa-arrow-left mr-2"></i>Data Diri</a> -->
-                                        <a href="javascript:void(0)" class="btn btn-md btn-success btnSoalQiroah">Next<i class="fa fa-arrow-right ml-2"></i></a>
-                                    </div>
-                                </div>
-                                <?php 
-                                    $no = 0;
-                                    foreach ($tarakib as $i => $soal) :?>
-                                    <div class="mb-3 soal">
-                                        <?php if($soal['tipe'] == "petunjuk") :?>
-                                            <div class="card">
-                                                <div class="card-body" dir="rtl">
-                                                    <div class="text-right">
-                                                        <?= $soal['data']?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php elseif($soal['tipe'] == "soal") :?>
-                                            <div class="card">
-                                                <div class="card-body" id="soalTarakib<?= $i?>">
-                                                    <input type="hidden" name="cekTarakib[]" data-id="<?= $i?>" id="cekTarakib<?= $i?>" value="null">
-                                                    <!-- <div class="form-group"> -->
-                                                        <div dir="rtl" class="mb-3">
-                                                            <div class="text-right">
-                                                                <?= angka_arab($soal['data']['no'])?>. <?= $soal['data']['soal']?>
-                                                            </div>
-                                                        </div>
-                                                        <?php foreach ($soal['data']['pilihan'] as $k => $data) :?>
-                                                            <div class="mb-3">
-                                                                <div class="form-check">
-                                                                    <div class="text-right" dir="rtl">
-                                                                        <label>
-                                                                            <input type="radio" class="soal_tarakib" data-id="<?= $i?>" id="soal_tarakib<?= $i.$k?>" name="soal_tarakib[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
-                                                                            <?= $data?>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        <?php endforeach;?>
-                                                    <!-- </div> -->
-                                                </div>
-                                            </div>
-                                            <?php $no++;?>
-                                        <?php elseif ($soal['tipe'] == "audio") :?>
-                                            <center><audio controls controlsList="nodownload"><source src="<?= base_url()?>assets/sounds/<?= $soal['data']?>" type='audio/mpeg'></audio></center>
-                                        <?php endif;?>
-                                    </div>
-                                <?php endforeach;?>
-                                <div class="col-12 mb-3">
-                                    <div class="d-flex justify-content-end">
-                                        <!-- <a href="javascript:void(0)" class="btn btn-md btn-success btnSoalIstima"><i class="fa fa-arrow-left mr-2"></i>SOAL ISTIMA</a> -->
-                                        <!-- <a href="javascript:void(0)" class="btn btn-md btn-success btnDataDiri"><i class="fa fa-arrow-left mr-2"></i>Data Diri</a> -->
-                                        <a href="javascript:void(0)" class="btn btn-md btn-success btnSoalQiroah">Next<i class="fa fa-arrow-right ml-2"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="soalToaflQiroah">
-                                <div class="col-12 mb-3">
-                                    <div class="d-flex justify-content-end">
-                                        <!-- <a href="javascript:void(0)" class="btn btn-md btn-success btnSoalTarakib"><i class="fa fa-arrow-left mr-2"></i>SOAL TARAKIB</a> -->
-                                        <button type="button" class="btn btn-md btn-primary submitForm">Simpan</button>
-                                    </div>
-                                </div>
-                                <?php 
-                                    $no = 0;
-                                    foreach ($qiroah as $i => $soal) :?>
-                                    <div class="mb-3 soal">
-                                        <?php if($soal['tipe'] == "petunjuk") :?>
-                                            <div class="card">
-                                                <div class="card-body" dir="rtl">
-                                                    <div class="text-right">
-                                                        <?= $soal['data']?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php elseif($soal['tipe'] == "soal") :?>
-                                            <div class="card">
-                                                <div class="card-body" id="soalQrioah<?= $i?>">
-                                                    <input type="hidden" name="cekQiroah[]" data-id="<?= $i?>" id="cekQiroah<?= $i?>" value="null">
-                                                    <!-- <div class="form-group"> -->
-                                                        <div dir="rtl" class="mb-3">
-                                                            <div class="text-right">
-                                                                <?= angka_arab($soal['data']['no'])?>. <?= $soal['data']['soal']?>
-                                                            </div>
-                                                        </div>
-                                                        <?php foreach ($soal['data']['pilihan'] as $k => $data) :?>
-                                                            <div class="mb-3">
-                                                                <div class="form-check">
-                                                                    <div class="text-right" dir="rtl">
-                                                                        <label>
-                                                                            <input type="radio" class="soal_qiroah" data-id="<?= $i?>" id="soal_qiroah<?= $i.$k?>" name="soal_qiroah[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
-                                                                            <?= $data?>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        <?php endforeach;?>
-                                                    <!-- </div> -->
-                                                </div>
-                                            </div>
-                                            <?php $no++;?>
-                                        <?php elseif ($soal['tipe'] == "audio") :?>
-                                            <center><audio controls controlsList="nodownload"><source src="<?= base_url()?>assets/sounds/<?= $soal['data']?>" type='audio/mpeg'></audio></center>
-                                        <?php endif;?>
-                                    </div>
-                                <?php endforeach;?>
-                                <div class="col-12 mb-3">
-                                    <div class="d-flex justify-content-end">
-                                        <!-- <a href="javascript:void(0)" class="btn btn-md btn-success btnSoalTarakib"><i class="fa fa-arrow-left mr-2"></i>SOAL TARAKIB</a> -->
                                         <button type="button" class="btn btn-md btn-primary submitForm">Simpan</button>
                                     </div>
                                 </div>
@@ -347,8 +229,6 @@
 
 <script>
     $(".soalToaflIstima").hide();
-    $(".soalToaflTarakib").hide();
-    $(".soalToaflQiroah").hide();
 
     $("#fontSize").change(function(){
         let size = $(this).val();
@@ -414,7 +294,7 @@
                         $(".soalToaflIstima").show();
                         $(".soalToaflTarakib").hide();
                         $(".soalToaflQiroah").hide();
-                        $(".titleBar").html("TES TOAFL (ISTIMA)")
+                        $(".titleBar").html("TES TOAFL")
                         $("#dataDiri").hide();
                         $("#formSoal").scrollTop(0);
                     }
@@ -429,21 +309,17 @@
         $("#cekIstima"+id).val(value)
     });
 
-    $('input:radio.soal_tarakib').click(function () {
-        let value = $(this).val();
-        let id = $(this).data("id");
-        $("#cekTarakib"+id).val(value)
-    });
+    $(".btnDataDiri").click(function(){
+        $(".soalToaflIstima").hide();
+        $(".soalToaflTarakib").hide();
+        $(".soalToaflQiroah").hide();
+        $("#dataDiri").show();
 
-    $('input:radio.soal_qiroah').click(function () {
-        let value = $(this).val();
-        let id = $(this).data("id");
-        $("#cekQiroah"+id).val(value)
-    });
+        $("#formSoal").scrollTop(0);
+    })
 
-    $(".btnSoalTarakib").click(function(){
+    $(".submitForm").click(function(){
         if($('input:radio.soal_istima:checked').length != 50){
-
             $.each($("input[name='cekIstima[]']"), function(){
                 id = $(this).data("id");
                 $("#soalIstima"+id).removeClass("list-group-item-danger")
@@ -456,87 +332,13 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Anda belum menyelesaikan soal Istima',
-            })
-
-            $(".soalToaflIstima").show();
-            $(".soalToaflTarakib").hide();
-            $(".soalToaflQiroah").hide();
-            $(".titleBar").html("TES TOAFL (ISTIMA)")
-            return false;
-        } else {
-            $(".soalToaflIstima").hide();
-            $(".soalToaflTarakib").show();
-            $(".soalToaflQiroah").hide();
-            
-            $(".titleBar").html("TES TOAFL (TARAKIB)")
-            $("#formSoal").scrollTop(0);
-        }
-    })
-
-    $(".btnSoalQiroah").click(function(){
-        if($('input:radio.soal_tarakib:checked').length != 40){
-            
-            $.each($("input[name='cekTarakib[]']"), function(){
-                id = $(this).data("id");
-                $("#soalTarakib"+id).removeClass("list-group-item-danger")
-
-                if($(this).val() == "null"){
-                    $("#soalTarakib"+id).addClass("list-group-item-danger")
-                }
-            })
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Anda belum menyelesaikan soal Tarakib',
-            })
-
-            $(".soalToaflIstima").hide();
-            $(".soalToaflTarakib").show();
-            $(".soalToaflQiroah").hide();
-            $(".titleBar").html("TES TOAFL (TARAKIB)")
-            return false;
-        } else {
-            $(".soalToaflIstima").hide();
-            $(".soalToaflTarakib").hide();
-            $(".soalToaflQiroah").show();
-            
-            $(".titleBar").html("TES TOAFL (QIROAH)")
-            $("#formSoal").scrollTop(0);
-        }
-    })
-
-    $(".btnDataDiri").click(function(){
-        $(".soalToaflIstima").hide();
-        $(".soalToaflTarakib").hide();
-        $(".soalToaflQiroah").hide();
-        $("#dataDiri").show();
-
-        $("#formSoal").scrollTop(0);
-    })
-
-    $(".submitForm").click(function(){
-        if($('input:radio.soal_qiroah:checked').length != 50){
-            $.each($("input[name='cekQiroah[]']"), function(){
-                id = $(this).data("id");
-                $("#soalQrioah"+id).removeClass("list-group-item-danger")
-
-                if($(this).val() == "null"){
-                    $("#soalQrioah"+id).addClass("list-group-item-danger")
-                }
-            })
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Anda belum menyelesaikan soal Qrioah',
+                text: 'Anda belum menyelesaikan soal',
             })
 
             $(".soalToaflIstima").hide();
             $(".soalToaflTarakib").hide();
             $(".soalToaflQiroah").show();
-            $(".titleBar").html("TES TOAFL (QIROAH)")
+            $(".titleBar").html("TES TOAFL")
             return false;
         } else {
             var c = confirm("Yakin telah menyelesaikan pekerjaan Anda?")

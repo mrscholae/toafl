@@ -29,18 +29,24 @@ class Soal extends CI_Controller {
             $data['istima'] = $this->Soal_model->get_soal_istimav1();
             $data['tarakib'] = $this->Soal_model->get_soal_tarakibv1();
             $data['qiroah'] = $this->Soal_model->get_soal_qiroahv1();
+            $page = "soal-toafl-";
         } else if($soal['tipe_soal'] == 2){
             $data['istima'] = $this->Soal_model->get_soal_istimav2();
             $data['tarakib'] = $this->Soal_model->get_soal_tarakibv2();
             $data['qiroah'] = $this->Soal_model->get_soal_qiroahv2();
+            $page = "soal-toafl-";
         } else if($soal['tipe_soal'] == 3){
             $data['istima'] = $this->Soal_model->get_soal_istimav3();
             $data['tarakib'] = $this->Soal_model->get_soal_tarakibv3();
             $data['qiroah'] = $this->Soal_model->get_soal_qiroahv3();
+            $page = "soal-toafl-";
+        } else if($soal['tipe_soal'] == 4){
+            $data['istima'] = $this->Soal_model->get_soalv4();
+            $page = "soal-toafl-satu-sesi";
         }
 
         $this->load->view("pages/layout/header-user", $data);
-        $this->load->view("pages/soal/soal-toafl-", $data);
+        $this->load->view("pages/soal/".$page, $data);
         $this->load->view("pages/layout/footer-user");
     }
 
@@ -109,6 +115,77 @@ class Soal extends CI_Controller {
         }
     }
 
+    public function add_jawaban_satu_sesi(){
+        $nama = $this->input->post("nama");
+
+        if($nama != ""){
+
+            $id_tes = $this->input->post("id_tes");
+            $tes = $this->Admin_model->get_one("tes", ["md5(id_tes)" => $id_tes]);
+            if($tes['tipe_soal'] == 4){
+                $soal = $this->Soal_model->get_soalv4();
+            }
+
+            $k = 0;
+            $data_soal = [];
+            foreach ($soal as $soal) {
+                if($soal['tipe'] == "soal"){
+                    $data_soal[$k] = $soal;
+                    $k++;
+                }
+            }
+    
+            $jawaban = $this->input->post("cekIstima");
+            $text = "";
+            $nilai_istima = 0;
+    
+            foreach ($data_soal as $i => $soal) {
+                if($soal['data']['jawaban'] == $jawaban[$i]){
+                    $nilai_istima += 1;
+                    $status = "benar";
+                } else {
+                    $status = "salah";
+                }
+    
+                $text .= $jawaban[$i]."/".$status."###";
+            }
+            
+            $data = [
+                "email" => $this->input->post("email"),
+                "nama" => $this->input->post("nama"),
+                "no_wa" => $this->input->post("no_wa"),
+                "t4_lahir" => $this->input->post("t4_lahir"),
+                "tgl_lahir" => $this->input->post("tgl_lahir"),
+                "alamat" => $this->input->post("alamat"),
+                "alamat_pengiriman" => $this->input->post("alamat_pengiriman"),
+                "nilai_istima" => $nilai_istima,
+                "nilai_tarakib" => 0,
+                "nilai_qiroah" => 0,
+                "text" => $text,
+                "id_tes" => $tes['id_tes'],
+                "tipe_soal" => $tes['tipe_soal'],
+            ];
+    
+            $this->Admin_model->add_data("peserta_toafl", $data);
+
+            $data = [
+                "nama" => $this->input->post("nama"),
+                "ttl" => $data['t4_lahir'] . ", " . $this->tgl_indo(date("d-m-Y", strtotime($data['tgl_lahir']))),
+                "alamat" => $data['alamat_pengiriman'],
+                "no_wa" => $data['no_wa'],
+                "hari_pengumuman" => $this->hari_ini(date("D", strtotime($tes['tgl_pengumuman']))),
+                "tgl_pengumuman" => $this->tgl_indo(date("d-m-Y", strtotime($tes['tgl_pengumuman']))),
+                "tgl_tes" => $this->tgl_indo(date("d-m-Y", strtotime($tes['tgl_tes']))),
+            ];
+
+            $this->session->set_flashdata('pesan', $data);
+        } else {
+            $this->session->set_flashdata('pesan', $data);
+        }
+
+        redirect(base_url("soal/id/".$id_tes), $data);
+
+    }
     public function add_jawaban(){
         $nama = $this->input->post("nama");
 
