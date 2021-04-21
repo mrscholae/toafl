@@ -29,52 +29,16 @@
                             <div class="card">
                                 <div class="card-body">
                                     <?php $data = $this->session->flashdata('pesan');?>
-                                    <p><center>Selamat anda telah berhasil menyelesaikan tes TOAFL Periode <?= $data['tgl_tes']?></center></p>
+                                    <p><center>Selamat anda telah berhasil menyelesaikan tes Try Out Seleksi Timur Tengah Periode <?= $data['tgl_tes']?></center></p>
                                     <p><center>Dengan biodata, </center></p>
                                     <p><center>Nama : <?= $data['nama']?></center></p>
                                     <p><center>TTL : <?= $data['ttl']?></center></p>
                                     <p><center>Alamat : <?= $data['alamat']?></center></p>
-                                    <p><center>Adapun Hasil SCORE TOAFL</center></p>
+                                    <p><center>Adapun Hasil SCORE Try Out Seleksi Timur Tengah</center></p>
                                     <p><center>Akan diumumkan Paling Lambat</center></p>
                                     <p><center>Hari : <?= $data['hari_pengumuman'].", ".$data['tgl_pengumuman']?></center></p>
                                     <p><center>Pukul 17.00</center></p>
-                                    <br>
-                                    <p><center>Jika Setelah Pukul 17.00</center></p>
-                                    <p><center>Belum mendapatkan nilai/ belum dijapri admin,</center></p>
-                                    <p><center>Maka Silahkan konfirmasi ke admin bagian penilaian : </center></p>
-                                    <p><center>WA : 0823-3512-4149</center></p>
-
-                                    <center><img src="<?= base_url()?>assets/img/kenapaharus.png" class="img-fluid mb-3" alt="Responsive image"></center>
-
-                                    <ol type="number">
-                                        <li>Sebagai Alat ukur kemampuan berbahasa Arab</li>
-                                        <li>Bisa digunakan sebagai syarat lanjut kuliah DN / LN, melamar kerja, kenaikan Jabatan Dll.</li>
-                                        <li>Digunakan sebagai syarat kelulusan kampus, syarat sidang skripsi/thesis, dan syarat wisuda.</li>
-                                    </ol>
-                                    
-                                    <center><img src="<?= base_url()?>assets/img/sertifikatkamidapat.png" class="img-fluid mb-3" alt="Responsive image"></center>
-                                    
-                                    <ol type="number">
-                                        <li>Persyaratan kelulusan S1, S2, & S3 Dalam Negeri</li>
-                                        <li>Persyaratan beasiswa Dalam Negeri</li>
-                                        <li>Persyaratan Sidang Skripsi/Thesis.</li>
-                                        <li>Syarat Wisuda</li>
-                                        <li>Syarat test CPNS</li>
-                                        <li>Melamar BUMN</li>
-                                    </ol>
-                                    
-                                    <center><img src="<?= base_url()?>assets/img/disclimer.png" class="img-fluid mb-3" alt="Responsive image"></center>
-
-                                    <ul type="radio">
-                                        <li>Lembaga KURSUS BAHASA ARAB AL-AZHAR adalah lembaga kursus bahasa Arab yang terdaftar sejak tahun 2016 dengan no SK DIKNAS NOMOR 421.9/565/418.20/2020.</li>
-                                        <li>TOAFL adalah test standarisasi kemampuan berbahasa arab yang kami design untuk mengukur kemampuan siswa dalam Bahasa arab . </li>
-                                        <li>TOAFL IBT test diselenggarakan oleh AL AZHAR ini dapat digunakan sebagai tolak ukur kemampuan bahasa Arab peserta tes.</li>
-                                        <li>Kami tidak menerima jual beli sertifikat.</li>
-                                        <li>Nilai pada sertifikat harus lah sesuai dengan nilai dari hasil test yang diujikan kepada peserta.</li>
-                                        <li>Penggunaan sertifikat TOAFL sebagai syarat sidang skripsi, thesis, dan wisuda dikembalikan kepada kebijakan kampus masing-masing.</li>
-                                        <li>Sertifikat berlaku dua tahun dari tanggal penerbitanya.</li>
-                                    </ul>                                
-                            </div>
+                                </div>
                         </div>
                     </div>
                 <?php else : ?>
