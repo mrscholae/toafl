@@ -194,7 +194,7 @@
                                                                 <div class="form-check">
                                                                     <div class="text-right" dir="rtl">
                                                                         <label>
-                                                                            <input type="radio" class="soal_istima" data-id="<?= $i?>" id="soal_istima<?= $i.$k?>" name="soal_istima[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>> 
+                                                                            <input type="radio" class="soal_istima" data-id="<?= $i?>" id="soal_istima<?= $i.$k?>" name="soal_istima[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?> checked> 
                                                                             <?= $data?>
                                                                         </label>
                                                                     </div>
@@ -253,7 +253,7 @@
                                                                 <div class="form-check">
                                                                     <div class="text-right" dir="rtl">
                                                                         <label>
-                                                                            <input type="radio" class="soal_tarakib" data-id="<?= $i?>" id="soal_tarakib<?= $i.$k?>" name="soal_tarakib[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
+                                                                            <input type="radio" class="soal_tarakib" data-id="<?= $i?>" id="soal_tarakib<?= $i.$k?>" name="soal_tarakib[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?> checked>
                                                                             <?= $data?>
                                                                         </label>
                                                                     </div>
@@ -312,7 +312,7 @@
                                                                 <div class="form-check">
                                                                     <div class="text-right" dir="rtl">
                                                                         <label>
-                                                                            <input type="radio" class="soal_qiroah" data-id="<?= $i?>" id="soal_qiroah<?= $i.$k?>" name="soal_qiroah[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?>>
+                                                                            <input type="radio" class="soal_qiroah" data-id="<?= $i?>" id="soal_qiroah<?= $i.$k?>" name="soal_qiroah[<?= $no?>]" value="<?= $data?>" <?php if($k == 0){echo "required";}?> checked>
                                                                             <?= $data?>
                                                                         </label>
                                                                     </div>

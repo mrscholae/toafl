@@ -45,6 +45,11 @@ class Soal extends CI_Controller {
             $data['title'] = "E-Test Try Out Seleksi Timur Tengah";
             $data['istima'] = $this->Soal_model->get_soalv4();
             $page = "soal-toafl-satu-sesi";
+        } else if($soal['tipe_soal'] == 5){
+            $data['istima'] = $this->Soal_model->get_soal_istimav2();
+            $data['tarakib'] = $this->Soal_model->get_soal_tarakibv5();
+            $data['qiroah'] = $this->Soal_model->get_soal_qiroahv5();
+            $page = "soal-toafl-";
         }
 
         $this->load->view("pages/layout/header-user", $data);
@@ -202,6 +207,8 @@ class Soal extends CI_Controller {
                 $soal = $this->Soal_model->get_soal_istimav2();
             } else if($tes['tipe_soal'] == 3){
                 $soal = $this->Soal_model->get_soal_istimav3();
+            } else if($tes['tipe_soal'] == 5){
+                $soal = $this->Soal_model->get_soal_istimav2();
             }
 
             $k = 0;
@@ -234,6 +241,8 @@ class Soal extends CI_Controller {
                 $soal = $this->Soal_model->get_soal_tarakibv2();
             } else if($tes['tipe_soal'] == 3){
                 $soal = $this->Soal_model->get_soal_tarakibv3();
+            } else if($tes['tipe_soal'] == 5){
+                $soal = $this->Soal_model->get_soal_tarakibv5();
             }
             
             $k = 0;
@@ -266,6 +275,8 @@ class Soal extends CI_Controller {
                 $soal = $this->Soal_model->get_soal_qiroahv2();
             } else if($tes['tipe_soal'] == 3){
                 $soal = $this->Soal_model->get_soal_qiroahv3();
+            } else if($tes['tipe_soal'] == 5){
+                $soal = $this->Soal_model->get_soal_qiroahv5();
             }
 
             $k = 0;
