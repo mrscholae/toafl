@@ -45,7 +45,7 @@ function tgl_indo($tgl){
                                 <p>Skor TOAFL : <?= round($skor)?> (<?= $nilai?>)</p>
                                 <p>Tgl Tes : <?= tgl_indo(date("d-m-Y", strtotime($tgl_tes)))?></p>
                                 <p>Berlaku Sampai : <?= tgl_indo(date("d-m-Y", strtotime($tgl_berakhir)))?></p>
-
+                                <p><small class="text-danger"><i>Catatan : Data diatas adalah data tes TOAFL peserta yang sebenar-benarnya. Dan tidak ada pengurangan dan penambahan nilai sedikitpun</i></small></p>
                             </div>
                         </div>
                     <?php else :?>
