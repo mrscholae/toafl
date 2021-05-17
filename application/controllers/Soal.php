@@ -41,7 +41,6 @@ class Soal extends CI_Controller {
             $data['qiroah'] = $this->Soal_model->get_soal_qiroahv3();
             $page = "soal-toafl-";
         } else if($soal['tipe_soal'] == 4){
-            
             $data['title'] = "E-Test Try Out Seleksi Timur Tengah";
             $data['istima'] = $this->Soal_model->get_soalv4();
             $page = "soal-toafl-satu-sesi";
@@ -49,6 +48,27 @@ class Soal extends CI_Controller {
             $data['istima'] = $this->Soal_model->get_soal_istimav2();
             $data['tarakib'] = $this->Soal_model->get_soal_tarakibv5();
             $data['qiroah'] = $this->Soal_model->get_soal_qiroahv5();
+            $page = "soal-toafl-";
+        } else if($soal['tipe_soal'] == 6){
+            $data['title'] = "E-Test Try Out Seleksi Timur Tengah";
+            $data['istima'] = $this->Soal_model->get_soal_to_2();
+            $page = "soal-toafl-satu-sesi";
+        } else if($soal['tipe_soal'] == 7){
+            $data['title'] = "E-Test Try Out Seleksi Timur Tengah";
+            $data['istima'] = $this->Soal_model->get_soal_to_3();
+            $page = "soal-toafl-satu-sesi";
+        } else if($soal['tipe_soal'] == 8){
+            $data['title'] = "E-Test Try Out Seleksi Timur Tengah";
+            $data['istima'] = $this->Soal_model->get_soal_to_4();
+            $page = "soal-toafl-satu-sesi";
+        } else if($soal['tipe_soal'] == 9){
+            $data['title'] = "E-Test Try Out Seleksi Timur Tengah";
+            $data['istima'] = $this->Soal_model->get_soal_to_5();
+            $page = "soal-toafl-satu-sesi";
+        } else if($soal['tipe_soal'] == 10){
+            $data['istima'] = $this->Soal_model->get_soal_istimav6();
+            $data['tarakib'] = $this->Soal_model->get_soal_tarakibv6();
+            $data['qiroah'] = $this->Soal_model->get_soal_qiroahv6();
             $page = "soal-toafl-";
         }
 
@@ -131,6 +151,14 @@ class Soal extends CI_Controller {
             $tes = $this->Admin_model->get_one("tes", ["md5(id_tes)" => $id_tes]);
             if($tes['tipe_soal'] == 4){
                 $soal = $this->Soal_model->get_soalv4();
+            } else if($tes['tipe_soal'] == 6){
+                $soal = $this->Soal_model->get_soal_to_2();
+            } else if($tes['tipe_soal'] == 7){
+                $soal = $this->Soal_model->get_soal_to_3();
+            } else if($tes['tipe_soal'] == 8){
+                $soal = $this->Soal_model->get_soal_to_4();
+            } else if($tes['tipe_soal'] == 9){
+                $soal = $this->Soal_model->get_soal_to_5();
             }
 
             $k = 0;
@@ -209,6 +237,8 @@ class Soal extends CI_Controller {
                 $soal = $this->Soal_model->get_soal_istimav3();
             } else if($tes['tipe_soal'] == 5){
                 $soal = $this->Soal_model->get_soal_istimav2();
+            } else if($tes['tipe_soal'] == 10){
+                $soal = $this->Soal_model->get_soal_istimav6();
             }
 
             $k = 0;
@@ -243,6 +273,8 @@ class Soal extends CI_Controller {
                 $soal = $this->Soal_model->get_soal_tarakibv3();
             } else if($tes['tipe_soal'] == 5){
                 $soal = $this->Soal_model->get_soal_tarakibv5();
+            } else if($tes['tipe_soal'] == 10){
+                $soal = $this->Soal_model->get_soal_tarakibv6();
             }
             
             $k = 0;
@@ -277,6 +309,8 @@ class Soal extends CI_Controller {
                 $soal = $this->Soal_model->get_soal_qiroahv3();
             } else if($tes['tipe_soal'] == 5){
                 $soal = $this->Soal_model->get_soal_qiroahv5();
+            } else if($tes['tipe_soal'] == 10){
+                $soal = $this->Soal_model->get_soal_qiroahv6();
             }
 
             $k = 0;
