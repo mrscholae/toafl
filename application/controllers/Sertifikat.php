@@ -33,7 +33,7 @@ class Sertifikat extends CI_Controller {
                 $peserta['nilai'] = "ضعيف جدا";
             } else if($skor >= 301 && $skor <= 400){
                 $peserta['nilai'] = "ضعيف";
-            } else if($skor >= 401 && $skor <= 500){
+            } else if($skor >= 401 && $skor <= 450){
                 $peserta['nilai'] = "مقبول";
             } else if($skor >= 451 && $skor <= 500){
                 $peserta['nilai'] = "جيد";
